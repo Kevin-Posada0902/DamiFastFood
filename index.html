@@ -26,7 +26,7 @@
         .header-logo {
             max-height: 55px; width: auto;
             border-radius: 50%; border: 2px solid white;
-            background-color: white;
+            background-color: white; /* Esto ayuda si el logo tiene fondo transparente */
         }
         header h1 { margin: 0; color: #fff; text-transform: uppercase; letter-spacing: 2px; font-size: 1.5rem; }
         .banner { padding: 25px 20px; text-align: center; }
@@ -47,23 +47,33 @@
         }
         .item {
             padding: 20px 15px; border-bottom: 1px solid rgba(255,255,255,0.08);
-            transition: all 0.3s ease; border-radius: 12px;
+            transition: all 0.3s ease; border-radius: 12px; cursor: pointer;
         }
-        .item:hover { background: rgba(255, 140, 0, 0.15); transform: translateY(-3px); }
+        .item:hover {
+            background: rgba(255, 140, 0, 0.15);
+            transform: translateY(-3px);
+            box-shadow: 0 4px 15px rgba(0,0,0,0.3);
+        }
         .item-header { display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; gap: 10px; }
         .item-nombre { font-weight: bold; font-size: 1.3rem; color: #fff; }
+        .precios-flex { display: flex; gap: 20px; }
+        .precio-box { text-align: right; }
+        .label-precio { font-size: 0.75rem; color: var(--naranja); display: block; text-transform: uppercase; }
+        .monto { font-weight: bold; font-size: 1.2rem; color: #fff; }
         .monto-naranja { font-weight: bold; font-size: 1.2rem; color: var(--naranja); }
         .descripcion { font-size: 0.95rem; color: #ccc; margin-top: 8px; font-style: italic; }
-        
+        .badge-recomendado {
+            background: #e74c3c; color: white; font-size: 0.7rem;
+            padding: 3px 8px; border-radius: 5px; margin-left: 10px;
+            vertical-align: middle; text-transform: uppercase;
+        }
         .info-local {
             background: rgba(0,0,0,0.9); padding: 40px 20px;
             text-align: center; border-top: 3px solid var(--naranja);
         }
-        .social-links { margin-top: 15px; }
         .social-links a {
-            color: white; font-size: 2.2rem; margin: 0 15px;
+            color: white; font-size: 2.2rem; margin: 0 20px;
             transition: transform 0.3s, color 0.3s; display: inline-block;
-            text-decoration: none;
         }
         .social-links a:hover { color: var(--naranja); transform: scale(1.2); }
         .btn-whatsapp {
@@ -73,6 +83,7 @@
             max-width: 280px; transition: transform 0.3s;
             box-shadow: 0 4px 10px rgba(37, 211, 102, 0.3);
         }
+        .btn-whatsapp:hover { transform: scale(1.05); }
         footer { text-align: center; padding: 20px; color: #777; font-size: 0.8rem; }
     </style>
 </head>
@@ -88,13 +99,39 @@
     </div>
 
     <div class="contenedor-menu">
-        <h2 class="categoria-titulo">⭐ Hamburguesas</h2>
+        <h2 class="categoria-titulo">⭐ Recomendados (Hamburguesas)</h2>
         <div class="item">
             <div class="item-header">
-                <span class="item-nombre">MONSTER BURGUER</span>
-                <span class="monto-naranja">$22.000 (Con Papas)</span>
+                <span class="item-nombre">MONSTER BURGUER <span class="badge-recomendado">LA MEJOR</span></span>
+                <div class="precios-flex">
+                    <div class="precio-box"><span class="label-precio">Sin Papas</span><span class="monto">$18.000</span></div>
+                    <div class="precio-box"><span class="label-precio">Con Papas</span><span class="monto">$22.000</span></div>
+                </div>
             </div>
             <p class="descripcion">Carne Artesanal 300g, Cebolla grille, Queso Mozzarella, Queso Cheddar, Tocineta y Vegetales.</p>
+        </div>
+
+        <div class="item">
+            <div class="item-header">
+                <span class="item-nombre">BURGUER CLÁSIC</span>
+                <div class="precios-flex">
+                    <div class="precio-box"><span class="label-precio">Sin Papas</span><span class="monto">$12.000</span></div>
+                    <div class="precio-box"><span class="label-precio">Con Papas</span><span class="monto">$16.000</span></div>
+                </div>
+            </div>
+            <p class="descripcion">Carne Artesanal 150g, Cebolla grille, Queso Mozzarella, Queso Cheddar y Vegetales.</p>
+        </div>
+
+        <h2 class="categoria-titulo">Hot Dogs</h2>
+        <div class="item">
+            <div class="item-header">
+                <span class="item-nombre">HOT DOG PREMIUM</span>
+                <div class="precios-flex">
+                    <div class="precio-box"><span class="label-precio">Sin Papas</span><span class="monto">$18.000</span></div>
+                    <div class="precio-box"><span class="label-precio">Con Papas</span><span class="monto">$22.000</span></div>
+                </div>
+            </div>
+            <p class="descripcion">Salchicha Americana, Cebolla Grille, Queso Mozzarella, Tocineta, Jamón Ahumado.</p>
         </div>
 
         <h2 class="categoria-titulo">Salchipapas</h2>
@@ -103,7 +140,16 @@
                 <span class="item-nombre">SALCHIPAPA MEGA</span>
                 <span class="monto-naranja">$24.000</span>
             </div>
-            <p class="descripcion">Papa a la Francesa 400g, Salchicha Americana, Carne y Pollo desmechado, Queso Mozzarella y Tocineta.</p>
+            <p class="descripcion">Papa a la Francesa 400g, Salchicha Americana, Carne desmechada, Pollo desmechado, Queso Mozzarella y Tocineta.</p>
+        </div>
+
+        <h2 class="categoria-titulo">Parrilla</h2>
+        <div class="item">
+            <div class="item-header">
+                <span class="item-nombre">CHURRASCO A LA PLANCHA</span>
+                <span class="monto-naranja">$30.000</span>
+            </div>
+            <p class="descripcion">Churrasco 300g, Papa a la Francesa 200g y Chimichurri.</p>
         </div>
 
         <a href="https://wa.me/573161491964" class="btn-whatsapp">
@@ -127,7 +173,7 @@
     </div>
 
     <footer>
-        <p>&copy; 2026 Dami Fast Food</p>
+        <p>&copy; 2026 Dami Fast Food | Sabor Real a Domicilio</p>
     </footer>
 </body>
 </html>
