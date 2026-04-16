@@ -83,7 +83,6 @@
             font-size: 1.8rem;
         }
 
-        /* EFECTO DE RESALTADO */
         .item {
             padding: 20px 15px;
             border-bottom: 1px solid rgba(255,255,255,0.08);
@@ -92,7 +91,6 @@
             cursor: pointer;
         }
         
-        /* El ítem se ilumina y se mueve ligeramente al pasar el mouse o tocarlo */
         .item:hover {
             background: rgba(255, 140, 0, 0.15);
             transform: translateY(-3px);
@@ -108,7 +106,11 @@
         }
 
         .item-nombre { font-weight: bold; font-size: 1.3rem; color: #fff; }
-        .monto { font-weight: bold; font-size: 1.2rem; color: var(--naranja); }
+        .precios-flex { display: flex; gap: 20px; }
+        .precio-box { text-align: right; }
+        .label-precio { font-size: 0.75rem; color: var(--naranja); display: block; text-transform: uppercase; }
+        .monto { font-weight: bold; font-size: 1.2rem; color: #fff; }
+        .monto-naranja { font-weight: bold; font-size: 1.2rem; color: var(--naranja); }
 
         .descripcion {
             font-size: 0.95rem;
@@ -174,43 +176,93 @@
     </header>
 
     <div class="banner">
-        <span class="no-esperes">🍔 ¡SOLO DOMICILIOS - PIDE YA! 🛵</span>
+        <span class="no-esperes">🍔 ¡SOLO DOMICILIOS - BAJO ENCARGO! 🛵</span>
     </div>
 
     <div class="contenedor-menu">
-        <h2 class="categoria-titulo">⭐ Nuestras Hamburguesas</h2>
+        
+        <h2 class="categoria-titulo">⭐ Recomendados (Hamburguesas)</h2>
         
         <div class="item">
             <div class="item-header">
-                <span class="item-nombre">MONSTER BURGUER <span class="badge-recomendado">RECOMENDADA</span></span>
-                <span class="monto">$22.000</span>
+                <span class="item-nombre">MONSTER BURGUER <span class="badge-recomendado">LA MEJOR</span></span>
+                <div class="precios-flex">
+                    <div class="precio-box"><span class="label-precio">Sin Papas</span><span class="monto">$18.000</span></div>
+                    <div class="precio-box"><span class="label-precio">Con Papas</span><span class="monto">$22.000</span></div>
+                </div>
             </div>
-            <p class="descripcion">Doble carne artesanal 300g, doble queso, tocineta, cebolla grille y vegetales. ¡La favorita!</p>
+            <p class="descripcion">Carne Artesanal 300g, Cebolla grille, Queso Mozzarella, Queso Cheddar, Tocineta y Vegetales.</p>
         </div>
 
         <div class="item">
             <div class="item-header">
-                <span class="item-nombre">BURGUER CLÁSIC <span class="badge-recomendado">TOP</span></span>
-                <span class="monto">$16.000</span>
+                <span class="item-nombre">BURGUER CLÁSIC</span>
+                <div class="precios-flex">
+                    <div class="precio-box"><span class="label-precio">Sin Papas</span><span class="monto">$12.000</span></div>
+                    <div class="precio-box"><span class="label-precio">Con Papas</span><span class="monto">$16.000</span></div>
+                </div>
             </div>
-            <p class="descripcion">Carne Artesanal 150g, Queso Mozzarella, Cheddar y Vegetales frescos.</p>
+            <p class="descripcion">Carne Artesanal 150g, Cebolla grille, Queso Mozzarella, Queso Cheddar y Vegetales.</p>
         </div>
 
-        <h2 class="categoria-titulo">Otras Especialidades</h2>
-        <div class="item">
-            <div class="item-header">
-                <span class="item-nombre">SALCHIPAPA MEGA</span>
-                <span class="monto">$24.000</span>
-            </div>
-            <p class="descripcion">Pollo, carne desmechada, tocineta, salchicha americana y doble queso.</p>
-        </div>
-
+        <h2 class="categoria-titulo">Hot Dogs</h2>
+        
         <div class="item">
             <div class="item-header">
                 <span class="item-nombre">HOT DOG PREMIUM</span>
-                <span class="monto">$22.000</span>
+                <div class="precios-flex">
+                    <div class="precio-box"><span class="label-precio">Sin Papas</span><span class="monto">$18.000</span></div>
+                    <div class="precio-box"><span class="label-precio">Con Papas</span><span class="monto">$22.000</span></div>
+                </div>
             </div>
-            <p class="descripcion">Salchicha gigante, tocineta, jamón ahumado y cebolla grille.</p>
+            <p class="descripcion">Salchicha Americana, Cebolla Grille, Queso Mozzarella, Tocineta, Jamón Ahumado.</p>
+        </div>
+
+        <div class="item">
+            <div class="item-header">
+                <span class="item-nombre">HOT DOG CLÁSIC</span>
+                <div class="precios-flex">
+                    <div class="precio-box"><span class="label-precio">Sin Papas</span><span class="monto">$12.000</span></div>
+                    <div class="precio-box"><span class="label-precio">Con Papas</span><span class="monto">$16.000</span></div>
+                </div>
+            </div>
+            <p class="descripcion">Salchicha Americana, cebolla grille, queso mozzarella.</p>
+        </div>
+
+        <h2 class="categoria-titulo">Salchipapas</h2>
+        
+        <div class="item">
+            <div class="item-header">
+                <span class="item-nombre">SALCHIPAPA MEGA</span>
+                <span class="monto-naranja">$24.000</span>
+            </div>
+            <p class="descripcion">Papa a la Francesa 400g, Salchicha Americana, Carne desmechada 110g, Pollo desmechado 110g, Queso Mozzarella y Tocineta.</p>
+        </div>
+
+        <div class="item">
+            <div class="item-header">
+                <span class="item-nombre">SALCHIPAPA CLÁSIC</span>
+                <span class="monto-naranja">$12.000</span>
+            </div>
+            <p class="descripcion">Papa a la Francesa 200g, Salchicha Americana y Queso Mozzarella.</p>
+        </div>
+
+        <h2 class="categoria-titulo">Parrilla</h2>
+        
+        <div class="item">
+            <div class="item-header">
+                <span class="item-nombre">CHURRASCO A LA PLANCHA</span>
+                <span class="monto-naranja">$30.000</span>
+            </div>
+            <p class="descripcion">Churrasco 300g, Papa a la Francesa 200g y Chimichurri.</p>
+        </div>
+
+        <div class="item">
+            <div class="item-header">
+                <span class="item-nombre">PECHUGA A LA PLANCHA</span>
+                <span class="monto-naranja">$26.000</span>
+            </div>
+            <p class="descripcion">Pechuga 350g, Papa a la Francesa y Queso Mozzarella.</p>
         </div>
 
         <a href="https://wa.me/573161491964" class="btn-whatsapp">
