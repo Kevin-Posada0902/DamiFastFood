@@ -1,0 +1,209 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Dami Fast Food | Menú Oficial</title>
+    <style>
+        body {
+            font-family: 'Arial', sans-serif;
+            margin: 0;
+            padding: 0;
+            background-color: #1a1a1a;
+            color: #eeeeee;
+        }
+
+        header {
+            background-color: #ff8c00; /* Naranja del menú */
+            padding: 20px;
+            text-align: center;
+            position: sticky;
+            top: 0;
+            z-index: 1000;
+        }
+
+        header h1 { margin: 0; color: #fff; text-transform: uppercase; letter-spacing: 2px; }
+
+        .banner {
+            background-color: #222;
+            padding: 30px 20px;
+            text-align: center;
+            border-bottom: 4px solid #ff8c00;
+        }
+
+        .no-esperes {
+            background-color: #ff8c00;
+            color: #000;
+            padding: 5px 20px;
+            border-radius: 20px;
+            font-weight: bold;
+            display: inline-block;
+        }
+
+        .contenedor-menu {
+            max-width: 900px;
+            margin: 0 auto;
+            padding: 20px;
+        }
+
+        .categoria-titulo {
+            color: #ff8c00;
+            border-bottom: 2px solid #333;
+            padding-bottom: 10px;
+            margin-top: 40px;
+            text-transform: uppercase;
+        }
+
+        .item {
+            padding: 15px 0;
+            border-bottom: 1px solid #333;
+        }
+
+        .item-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            flex-wrap: wrap;
+        }
+
+        .item-nombre { font-weight: bold; font-size: 1.2rem; color: #fff; }
+
+        .precios-flex {
+            display: flex;
+            gap: 20px;
+        }
+
+        .precio-box { text-align: right; }
+        .label-precio { font-size: 0.7rem; color: #ff8c00; display: block; text-transform: uppercase; }
+        .monto { font-weight: bold; font-size: 1.1rem; }
+
+        .descripcion {
+            font-size: 0.9rem;
+            color: #999;
+            margin-top: 5px;
+            font-style: italic;
+        }
+
+        .btn-whatsapp {
+            display: block;
+            background-color: #25d366;
+            color: white;
+            text-align: center;
+            padding: 18px;
+            margin: 40px auto;
+            text-decoration: none;
+            border-radius: 50px;
+            font-weight: bold;
+            max-width: 300px;
+            box-shadow: 0 4px 15px rgba(37, 211, 102, 0.3);
+        }
+
+        footer { text-align: center; padding: 40px; color: #555; font-size: 0.8rem; }
+    </style>
+</head>
+<body>
+
+    <header>
+        <h1>DAMI FAST FOOD</h1>
+    </header>
+
+    <div class="banner">
+        <span class="no-esperes">NO ESPERES, SABOREA!!</span>
+    </div>
+
+    <div class="contenedor-menu">
+        
+        <h2 class="categoria-titulo">Hamburguesas</h2>
+        
+        <div class="item">
+            <div class="item-header">
+                <span class="item-nombre">BURGUER CLÁSIC</span>
+                <div class="precios-flex">
+                    <div class="precio-box"><span class="label-precio">Sin Papas</span><span class="monto">$12.000</span></div>
+                    <div class="precio-box"><span class="label-precio">Con Papas</span><span class="monto">$16.000</span></div>
+                </div>
+            </div>
+            <p class="descripcion">Carne Artesanal 150g, Cebolla grille, Queso Mozzarella, Queso Cheddar y Vegetales.</p>
+        </div>
+
+        <div class="item">
+            <div class="item-header">
+                <span class="item-nombre">MONSTER BURGUER</span>
+                <div class="precios-flex">
+                    <div class="precio-box"><span class="label-precio">Sin Papas</span><span class="monto">$18.000</span></div>
+                    <div class="precio-box"><span class="label-precio">Con Papas</span><span class="monto">$22.000</span></div>
+                </div>
+            </div>
+            <p class="descripcion">Carne Artesanal 300g, Cebolla grille, Queso Mozzarella, Queso Cheddar, Tocineta y Vegetales.</p>
+        </div>
+
+        <h2 class="categoria-titulo">Hot Dogs</h2>
+        
+        <div class="item">
+            <div class="item-header">
+                <span class="item-nombre">HOT DOG CLÁSIC</span>
+                <div class="precios-flex">
+                    <div class="precio-box"><span class="label-precio">Sin Papas</span><span class="monto">$12.000</span></div>
+                    <div class="precio-box"><span class="label-precio">Con Papas</span><span class="monto">$16.000</span></div>
+                </div>
+            </div>
+            <p class="descripcion">Salchicha Americana, cebolla grille, queso mozzarella.</p>
+        </div>
+
+        <div class="item">
+            <div class="item-header">
+                <span class="item-nombre">HOT DOG PREMIUM</span>
+                <div class="precios-flex">
+                    <div class="precio-box"><span class="label-precio">Sin Papas</span><span class="monto">$18.000</span></div>
+                    <div class="precio-box"><span class="label-precio">Con Papas</span><span class="monto">$22.000</span></div>
+                </div>
+            </div>
+            <p class="descripcion">Salchicha Americana, Cebolla Grille, Queso Mozzarella, Tocineta, Jamón Ahumado.</p>
+        </div>
+
+        <h2 class="categoria-titulo">Salchipapa</h2>
+        
+        <div class="item">
+            <div class="item-header">
+                <span class="item-nombre">SALCHIPAPA CLÁSIC</span>
+                <span class="monto">$12.000</span>
+            </div>
+            <p class="descripcion">Papa a la Francesa 200g, Salchicha Americana y Queso Mozzarella.</p>
+        </div>
+
+        <div class="item">
+            <div class="item-header">
+                <span class="item-nombre">SALCHIPAPA MEGA</span>
+                <span class="monto">$24.000</span>
+            </div>
+            <p class="descripcion">Papa a la Francesa 400g, Salchicha Americana, Carne desmechada 110g, Pollo desmechado 110g, Queso Mozzarella y Tocineta.</p>
+        </div>
+
+        <h2 class="categoria-titulo">Parrilla</h2>
+        
+        <div class="item">
+            <div class="item-header">
+                <span class="item-nombre">CHURRASCO A LA PLANCHA</span>
+                <span class="monto">$30.000</span>
+            </div>
+            <p class="descripcion">Churrasco 300g, Papa a la Francesa 200g y Chimichurri.</p>
+        </div>
+
+        <div class="item">
+            <div class="item-header">
+                <span class="item-nombre">PECHUGA A LA PLANCHA</span>
+                <span class="monto">$26.000</span>
+            </div>
+            <p class="descripcion">Pechuga 350g, Papa a la Francesa y Queso Mozzarella.</p>
+        </div>
+
+        <a href="https://wa.me/573161491964" class="btn-whatsapp">PEDIR AHORA POR WHATSAPP</a>
+    </div>
+
+    <footer>
+        <p>PEDIDOS: 316 149 1964 - 313 392 2664</p>
+        <p>&copy; 2026 Dami Fast Food | El mejor sabor al instante</p>
+    </footer>
+
+</body>
+</html>
