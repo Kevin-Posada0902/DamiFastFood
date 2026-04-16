@@ -4,7 +4,13 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Dami Fast Food | Menú Oficial</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
     <style>
+        :root {
+            --naranja: #ff8c00;
+            --oscuro: rgba(15, 15, 15, 0.9);
+        }
+
         body {
             font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
             margin: 0;
@@ -18,7 +24,7 @@
         }
 
         header {
-            background-color: #ff8c00;
+            background-color: var(--naranja);
             padding: 10px 20px;
             text-align: center;
             position: sticky;
@@ -31,11 +37,10 @@
             gap: 15px;
         }
 
-        /* AJUSTE PARA TU NUEVO LOGO */
         .header-logo {
-            max-height: 60px; /* Tamaño ideal para que se vea bien el logo circular */
+            max-height: 55px;
             width: auto;
-            border-radius: 50%; /* Como tu logo es circular, esto ayuda a que encaje perfecto */
+            border-radius: 50%;
             border: 2px solid white;
         }
 
@@ -44,49 +49,54 @@
             color: #fff; 
             text-transform: uppercase; 
             letter-spacing: 2px;
-            font-size: 1.6rem;
-            text-shadow: 2px 2px 4px rgba(0,0,0,0.5);
+            font-size: 1.5rem;
         }
 
-        .banner {
-            padding: 30px 20px;
-            text-align: center;
-        }
-
+        .banner { padding: 25px 20px; text-align: center; }
         .no-esperes {
-            background-color: #ff8c00;
+            background-color: var(--naranja);
             color: #fff;
-            padding: 10px 30px;
-            border-radius: 25px;
+            padding: 8px 25px;
+            border-radius: 20px;
             font-weight: bold;
             display: inline-block;
             text-transform: uppercase;
-            font-size: 1.1rem;
         }
 
         .contenedor-menu {
             max-width: 850px;
             margin: 0 auto;
-            padding: 30px;
-            background: rgba(15, 15, 15, 0.7);
+            padding: 20px;
+            background: var(--oscuro);
             border-radius: 20px;
-            backdrop-filter: blur(8px);
-            margin-bottom: 60px;
-            border: 1px solid rgba(255,140,0,0.2);
+            backdrop-filter: blur(10px);
+            margin-bottom: 40px;
+            border: 1px solid rgba(255,140,0,0.3);
         }
 
         .categoria-titulo {
-            color: #ff8c00;
-            border-bottom: 3px solid #ff8c00;
-            padding-bottom: 12px;
-            margin-top: 50px;
+            color: var(--naranja);
+            border-bottom: 2px solid var(--naranja);
+            padding-bottom: 10px;
+            margin-top: 40px;
             text-transform: uppercase;
-            font-size: 2rem;
+            font-size: 1.8rem;
         }
 
+        /* EFECTO DE RESALTADO */
         .item {
-            padding: 25px 0;
+            padding: 20px 15px;
             border-bottom: 1px solid rgba(255,255,255,0.08);
+            transition: all 0.3s ease;
+            border-radius: 12px;
+            cursor: pointer;
+        }
+        
+        /* El ítem se ilumina y se mueve ligeramente al pasar el mouse o tocarlo */
+        .item:hover {
+            background: rgba(255, 140, 0, 0.15);
+            transform: translateY(-3px);
+            box-shadow: 0 4px 15px rgba(0,0,0,0.3);
         }
 
         .item-header {
@@ -97,18 +107,44 @@
             gap: 10px;
         }
 
-        .item-nombre { font-weight: bold; font-size: 1.4rem; color: #fff; }
-        .precios-flex { display: flex; gap: 20px; }
-        .precio-box { text-align: right; }
-        .label-precio { font-size: 0.75rem; color: #ff8c00; display: block; text-transform: uppercase; }
-        .monto { font-weight: bold; font-size: 1.3rem; color: #fff; }
+        .item-nombre { font-weight: bold; font-size: 1.3rem; color: #fff; }
+        .monto { font-weight: bold; font-size: 1.2rem; color: var(--naranja); }
 
         .descripcion {
-            font-size: 1rem;
-            color: #dddddd;
-            margin-top: 10px;
-            line-height: 1.5;
+            font-size: 0.95rem;
+            color: #ccc;
+            margin-top: 8px;
             font-style: italic;
+        }
+
+        .badge-recomendado {
+            background: #e74c3c;
+            color: white;
+            font-size: 0.7rem;
+            padding: 3px 8px;
+            border-radius: 5px;
+            margin-left: 10px;
+            vertical-align: middle;
+            text-transform: uppercase;
+        }
+
+        .info-local {
+            background: rgba(0,0,0,0.9);
+            padding: 40px 20px;
+            text-align: center;
+            border-top: 3px solid var(--naranja);
+        }
+
+        .social-links a {
+            color: white;
+            font-size: 2.2rem;
+            margin: 0 20px;
+            transition: transform 0.3s, color 0.3s;
+            display: inline-block;
+        }
+        .social-links a:hover { 
+            color: var(--naranja); 
+            transform: scale(1.2);
         }
 
         .btn-whatsapp {
@@ -116,97 +152,91 @@
             background-color: #25d366;
             color: white;
             text-align: center;
-            padding: 20px;
-            margin: 50px auto;
+            padding: 18px;
+            margin: 30px auto;
             text-decoration: none;
             border-radius: 50px;
             font-weight: bold;
-            font-size: 1.2rem;
-            max-width: 320px;
-            box-shadow: 0 5px 20px rgba(37, 211, 102, 0.4);
-            transition: all 0.3s ease;
+            max-width: 280px;
+            transition: transform 0.3s;
+            box-shadow: 0 4px 10px rgba(37, 211, 102, 0.3);
         }
+        .btn-whatsapp:hover { transform: scale(1.05); }
 
-        footer { 
-            text-align: center; 
-            padding: 50px 20px; 
-            background: rgba(0,0,0,0.9); 
-            color: #aaa; 
-            border-top: 1px solid rgba(255,140,0,0.3);
-        }
+        footer { text-align: center; padding: 20px; color: #777; font-size: 0.8rem; }
     </style>
 </head>
 <body>
 
     <header>
-        <img src="logo.png" alt="Logo Dami Fast Food" class="header-logo">
+        <img src="WhatsApp Image 2026-04-16 at 12.41.48 AM.jpeg" alt="Logo Dami Fast Food" class="header-logo">
         <h1>DAMI FAST FOOD</h1>
     </header>
 
     <div class="banner">
-        <span class="no-esperes">NO ESPERES, SABOREA!!</span>
+        <span class="no-esperes">🍔 ¡SOLO DOMICILIOS - PIDE YA! 🛵</span>
     </div>
 
     <div class="contenedor-menu">
-        <h2 class="categoria-titulo">Hamburguesas</h2>
+        <h2 class="categoria-titulo">⭐ Nuestras Hamburguesas</h2>
+        
         <div class="item">
             <div class="item-header">
-                <span class="item-nombre">BURGUER CLÁSIC</span>
-                <div class="precios-flex">
-                    <div class="precio-box"><span class="label-precio">Sin Papas</span><span class="monto">$12.000</span></div>
-                    <div class="precio-box"><span class="label-precio">Con Papas</span><span class="monto">$16.000</span></div>
-                </div>
+                <span class="item-nombre">MONSTER BURGUER <span class="badge-recomendado">RECOMENDADA</span></span>
+                <span class="monto">$22.000</span>
             </div>
-            <p class="descripcion">Carne Artesanal 150g, Cebolla grille, Queso Mozzarella, Queso Cheddar y Vegetales.</p>
+            <p class="descripcion">Doble carne artesanal 300g, doble queso, tocineta, cebolla grille y vegetales. ¡La favorita!</p>
         </div>
 
         <div class="item">
             <div class="item-header">
-                <span class="item-nombre">MONSTER BURGUER</span>
-                <div class="precios-flex">
-                    <div class="precio-box"><span class="label-precio">Sin Papas</span><span class="monto">$18.000</span></div>
-                    <div class="precio-box"><span class="label-precio">Con Papas</span><span class="monto">$22.000</span></div>
-                </div>
+                <span class="item-nombre">BURGUER CLÁSIC <span class="badge-recomendado">TOP</span></span>
+                <span class="monto">$16.000</span>
             </div>
-            <p class="descripcion">Carne Artesanal 300g, Cebolla grille, Queso Mozzarella, Queso Cheddar, Tocineta y Vegetales.</p>
+            <p class="descripcion">Carne Artesanal 150g, Queso Mozzarella, Cheddar y Vegetales frescos.</p>
         </div>
 
-        <h2 class="categoria-titulo">Hot Dogs</h2>
+        <h2 class="categoria-titulo">Otras Especialidades</h2>
         <div class="item">
             <div class="item-header">
-                <span class="item-nombre">HOT DOG CLÁSIC</span>
-                <div class="precios-flex">
-                    <div class="precio-box"><span class="label-precio">Sin Papas</span><span class="monto">$12.000</span></div>
-                    <div class="precio-box"><span class="label-precio">Con Papas</span><span class="monto">$16.000</span></div>
-                </div>
+                <span class="item-nombre">SALCHIPAPA MEGA</span>
+                <span class="monto">$24.000</span>
             </div>
-            <p class="descripcion">Salchicha Americana, cebolla grille, queso mozzarella.</p>
+            <p class="descripcion">Pollo, carne desmechada, tocineta, salchicha americana y doble queso.</p>
         </div>
 
-        <h2 class="categoria-titulo">Salchipapa</h2>
         <div class="item">
             <div class="item-header">
-                <span class="item-nombre">SALCHIPAPA CLÁSIC</span>
-                <span class="monto">$12.000</span>
+                <span class="item-nombre">HOT DOG PREMIUM</span>
+                <span class="monto">$22.000</span>
             </div>
-            <p class="descripcion">Papa a la Francesa 200g, Salchicha Americana y Queso Mozzarella.</p>
+            <p class="descripcion">Salchicha gigante, tocineta, jamón ahumado y cebolla grille.</p>
         </div>
 
-        <h2 class="categoria-titulo">Parrilla</h2>
-        <div class="item">
-            <div class="item-header">
-                <span class="item-nombre">CHURRASCO A LA PLANCHA</span>
-                <span class="monto">$30.000</span>
-            </div>
-            <p class="descripcion">Churrasco 300g, Papa a la Francesa 200g y Chimichurri.</p>
-        </div>
+        <a href="https://wa.me/573161491964" class="btn-whatsapp">
+            <i class="fab fa-whatsapp"></i> PEDIR POR WHATSAPP
+        </a>
+    </div>
 
-        <a href="https://wa.me/573161491964" class="btn-whatsapp">📲 PEDIR AHORA POR WHATSAPP</a>
+    <div class="info-local">
+        <h3>📍 INFORMACIÓN DE PEDIDOS</h3>
+        <p><strong>Horario:</strong> Atención todo el día (Bajo encargo)</p>
+        <p><strong>Servicio:</strong> Solo Domicilios</p>
+        <p>Bogotá, Colombia</p>
+        
+        <div class="social-links">
+            <p>SÍGUENOS EN REDES:</p>
+            <a href="https://www.instagram.com/damifastfood?igsh=MWtjemUzOHRrcGJvbA==" target="_blank">
+                <i class="fab fa-instagram"></i>
+            </a>
+            <a href="https://web.facebook.com/profile.php?id=61570821602781" target="_blank">
+                <i class="fab fa-facebook"></i>
+            </a>
+        </div>
     </div>
 
     <footer>
-        <p>PEDIDOS: 316 149 1964 - 313 392 2664</p>
-        <p>&copy; 2026 Dami Fast Food | Sabor real al instante</p>
+        <p>&copy; 2026 Dami Fast Food | Sabor Real a Domicilio</p>
     </footer>
 
 </body>
