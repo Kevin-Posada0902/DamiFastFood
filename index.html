@@ -26,7 +26,7 @@
         .header-logo {
             max-height: 55px; width: auto;
             border-radius: 50%; border: 2px solid white;
-            background-color: white; /* Esto ayuda si el logo tiene fondo transparente */
+            background-color: white;
         }
         header h1 { margin: 0; color: #fff; text-transform: uppercase; letter-spacing: 2px; font-size: 1.5rem; }
         .banner { padding: 25px 20px; text-align: center; }
@@ -47,33 +47,23 @@
         }
         .item {
             padding: 20px 15px; border-bottom: 1px solid rgba(255,255,255,0.08);
-            transition: all 0.3s ease; border-radius: 12px; cursor: pointer;
+            transition: all 0.3s ease; border-radius: 12px;
         }
-        .item:hover {
-            background: rgba(255, 140, 0, 0.15);
-            transform: translateY(-3px);
-            box-shadow: 0 4px 15px rgba(0,0,0,0.3);
-        }
+        .item:hover { background: rgba(255, 140, 0, 0.15); transform: translateY(-3px); }
         .item-header { display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; gap: 10px; }
         .item-nombre { font-weight: bold; font-size: 1.3rem; color: #fff; }
-        .precios-flex { display: flex; gap: 20px; }
-        .precio-box { text-align: right; }
-        .label-precio { font-size: 0.75rem; color: var(--naranja); display: block; text-transform: uppercase; }
-        .monto { font-weight: bold; font-size: 1.2rem; color: #fff; }
         .monto-naranja { font-weight: bold; font-size: 1.2rem; color: var(--naranja); }
         .descripcion { font-size: 0.95rem; color: #ccc; margin-top: 8px; font-style: italic; }
-        .badge-recomendado {
-            background: #e74c3c; color: white; font-size: 0.7rem;
-            padding: 3px 8px; border-radius: 5px; margin-left: 10px;
-            vertical-align: middle; text-transform: uppercase;
-        }
+        
         .info-local {
             background: rgba(0,0,0,0.9); padding: 40px 20px;
             text-align: center; border-top: 3px solid var(--naranja);
         }
+        .social-links { margin-top: 15px; }
         .social-links a {
-            color: white; font-size: 2.2rem; margin: 0 20px;
+            color: white; font-size: 2.2rem; margin: 0 15px;
             transition: transform 0.3s, color 0.3s; display: inline-block;
+            text-decoration: none;
         }
         .social-links a:hover { color: var(--naranja); transform: scale(1.2); }
         .btn-whatsapp {
@@ -83,55 +73,28 @@
             max-width: 280px; transition: transform 0.3s;
             box-shadow: 0 4px 10px rgba(37, 211, 102, 0.3);
         }
-        .btn-whatsapp:hover { transform: scale(1.05); }
         footer { text-align: center; padding: 20px; color: #777; font-size: 0.8rem; }
     </style>
 </head>
 <body>
 
     <header>
-    <img src="logo.jpg" alt="Logo Dami Fast Food" class="header-logo">
-    <h1>DAMI FAST FOOD</h1>
-</header>
+        <img src="logo.jpg" alt="Logo Dami Fast Food" class="header-logo">
+        <h1>DAMI FAST FOOD</h1>
+    </header>
 
     <div class="banner">
         <span class="no-esperes">🍔 ¡SOLO DOMICILIOS - BAJO ENCARGO! 🛵</span>
     </div>
 
     <div class="contenedor-menu">
-        <h2 class="categoria-titulo">⭐ Recomendados (Hamburguesas)</h2>
+        <h2 class="categoria-titulo">⭐ Hamburguesas</h2>
         <div class="item">
             <div class="item-header">
-                <span class="item-nombre">MONSTER BURGUER <span class="badge-recomendado">LA MEJOR</span></span>
-                <div class="precios-flex">
-                    <div class="precio-box"><span class="label-precio">Sin Papas</span><span class="monto">$18.000</span></div>
-                    <div class="precio-box"><span class="label-precio">Con Papas</span><span class="monto">$22.000</span></div>
-                </div>
+                <span class="item-nombre">MONSTER BURGUER</span>
+                <span class="monto-naranja">$22.000 (Con Papas)</span>
             </div>
             <p class="descripcion">Carne Artesanal 300g, Cebolla grille, Queso Mozzarella, Queso Cheddar, Tocineta y Vegetales.</p>
-        </div>
-
-        <div class="item">
-            <div class="item-header">
-                <span class="item-nombre">BURGUER CLÁSIC</span>
-                <div class="precios-flex">
-                    <div class="precio-box"><span class="label-precio">Sin Papas</span><span class="monto">$12.000</span></div>
-                    <div class="precio-box"><span class="label-precio">Con Papas</span><span class="monto">$16.000</span></div>
-                </div>
-            </div>
-            <p class="descripcion">Carne Artesanal 150g, Cebolla grille, Queso Mozzarella, Queso Cheddar y Vegetales.</p>
-        </div>
-
-        <h2 class="categoria-titulo">Hot Dogs</h2>
-        <div class="item">
-            <div class="item-header">
-                <span class="item-nombre">HOT DOG PREMIUM</span>
-                <div class="precios-flex">
-                    <div class="precio-box"><span class="label-precio">Sin Papas</span><span class="monto">$18.000</span></div>
-                    <div class="precio-box"><span class="label-precio">Con Papas</span><span class="monto">$22.000</span></div>
-                </div>
-            </div>
-            <p class="descripcion">Salchicha Americana, Cebolla Grille, Queso Mozzarella, Tocineta, Jamón Ahumado.</p>
         </div>
 
         <h2 class="categoria-titulo">Salchipapas</h2>
@@ -140,16 +103,7 @@
                 <span class="item-nombre">SALCHIPAPA MEGA</span>
                 <span class="monto-naranja">$24.000</span>
             </div>
-            <p class="descripcion">Papa a la Francesa 400g, Salchicha Americana, Carne desmechada, Pollo desmechado, Queso Mozzarella y Tocineta.</p>
-        </div>
-
-        <h2 class="categoria-titulo">Parrilla</h2>
-        <div class="item">
-            <div class="item-header">
-                <span class="item-nombre">CHURRASCO A LA PLANCHA</span>
-                <span class="monto-naranja">$30.000</span>
-            </div>
-            <p class="descripcion">Churrasco 300g, Papa a la Francesa 200g y Chimichurri.</p>
+            <p class="descripcion">Papa a la Francesa 400g, Salchicha Americana, Carne y Pollo desmechado, Queso Mozzarella y Tocineta.</p>
         </div>
 
         <a href="https://wa.me/573161491964" class="btn-whatsapp">
@@ -159,26 +113,21 @@
 
     <div class="info-local">
         <h3>📍 INFORMACIÓN DE PEDIDOS</h3>
-        <p><strong>Horario:</strong> Atención todo el día (Bajo encargo)</p>
-        <p><strong>Servicio:</strong> Solo Domicilios</p>
-        <p>Mz a, Villa yuli #casa 8, Ibagué, Tolima</p>
+        <p><strong>Servicio:</strong> Solo Domicilios (Ibagué)</p>
+        <p>Mz a, Villa yuli #casa 8</p>
         
         <div class="social-links">
             <p>ENCUÉNTRANOS Y SÍGUENOS:</p>
-            <a href="https://maps.app.goo.gl/9yGZ3N2m7Kx6YpXG8" target="_blank" title="Ver ubicación en Maps">
-                <i class="fas fa-map-marked-alt"></i>
+            <a href="https://www.google.com/maps?q=Mz+a,+Villa+yuli+casa+8,+Ibagué" target="_blank" title="Ubicación">
+                <i class="fas fa-map-marker-alt"></i>
             </a>
-            <a href="https://www.instagram.com/damifastfood?igsh=MWtjemUzOHRrcGJvbA==" target="_blank">
-                <i class="fab fa-instagram"></i>
-            </a>
-            <a href="https://web.facebook.com/profile.php?id=61570821602781" target="_blank">
-                <i class="fab fa-facebook"></i>
-            </a>
+            <a href="https://www.instagram.com/damifastfood" target="_blank"><i class="fab fa-instagram"></i></a>
+            <a href="https://web.facebook.com/profile.php?id=61570821602781" target="_blank"><i class="fab fa-facebook"></i></a>
         </div>
     </div>
 
     <footer>
-        <p>&copy; 2026 Dami Fast Food | Sabor Real a Domicilio</p>
+        <p>&copy; 2026 Dami Fast Food</p>
     </footer>
 </body>
 </html>
