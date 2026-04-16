@@ -6,57 +6,82 @@
     <title>Dami Fast Food | Menú Oficial</title>
     <style>
         body {
-            font-family: 'Arial', sans-serif;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
             margin: 0;
             padding: 0;
-            background-color: #1a1a1a;
+            /* IMAGEN DE FONDO DE HAMBURGUESA DELICIOSA */
+            background: linear-gradient(rgba(0,0,0,0.85), rgba(0,0,0,0.85)), 
+                        url('https://images.unsplash.com/photo-1594179047519-f347310d3322?ixlib=rb-1.2.1&auto=format&fit=crop&w=1950&q=80');
+            background-size: cover;
+            background-position: center;
+            background-attachment: fixed; /* El fondo se queda quieto al bajar */
             color: #eeeeee;
         }
 
         header {
-            background-color: #ff8c00; /* Naranja del menú */
+            background-color: #ff8c00; /* Naranja Dami */
             padding: 20px;
             text-align: center;
             position: sticky;
             top: 0;
             z-index: 1000;
+            box-shadow: 0 4px 15px rgba(0,0,0,0.6);
         }
 
-        header h1 { margin: 0; color: #fff; text-transform: uppercase; letter-spacing: 2px; }
+        header h1 { 
+            margin: 0; 
+            color: #fff; 
+            text-transform: uppercase; 
+            letter-spacing: 3px;
+            font-size: 2rem;
+            text-shadow: 2px 2px 4px rgba(0,0,0,0.5);
+        }
 
         .banner {
-            background-color: #222;
             padding: 30px 20px;
             text-align: center;
-            border-bottom: 4px solid #ff8c00;
         }
 
         .no-esperes {
             background-color: #ff8c00;
-            color: #000;
-            padding: 5px 20px;
-            border-radius: 20px;
+            color: #fff;
+            padding: 10px 30px;
+            border-radius: 25px;
             font-weight: bold;
             display: inline-block;
+            text-transform: uppercase;
+            font-size: 1.1rem;
+            box-shadow: 0 2px 8px rgba(0,0,0,0.4);
         }
 
         .contenedor-menu {
-            max-width: 900px;
+            max-width: 850px;
             margin: 0 auto;
-            padding: 20px;
+            padding: 30px;
+            background: rgba(15, 15, 15, 0.7); /* Caja semi-transparente oscura */
+            border-radius: 20px;
+            backdrop-filter: blur(8px); /* Efecto de vidrio esmerilado más intenso */
+            margin-bottom: 60px;
+            border: 1px solid rgba(255,140,0,0.2); /* Borde naranja sutil */
         }
 
         .categoria-titulo {
             color: #ff8c00;
-            border-bottom: 2px solid #333;
-            padding-bottom: 10px;
-            margin-top: 40px;
+            border-bottom: 3px solid #ff8c00;
+            padding-bottom: 12px;
+            margin-top: 50px;
             text-transform: uppercase;
+            font-size: 2rem;
+            letter-spacing: 1px;
         }
 
         .item {
-            padding: 15px 0;
-            border-bottom: 1px solid #333;
+            padding: 25px 0;
+            border-bottom: 1px solid rgba(255,255,255,0.08);
+        }
+
+        .item:last-child {
+            border-bottom: none;
         }
 
         .item-header {
@@ -64,23 +89,26 @@
             justify-content: space-between;
             align-items: center;
             flex-wrap: wrap;
+            gap: 10px;
         }
 
-        .item-nombre { font-weight: bold; font-size: 1.2rem; color: #fff; }
-
-        .precios-flex {
-            display: flex;
-            gap: 20px;
+        .item-nombre { 
+            font-weight: bold; 
+            font-size: 1.4rem; 
+            color: #fff; 
+            text-shadow: 1px 1px 2px rgba(0,0,0,0.5);
         }
 
+        .precios-flex { display: flex; gap: 20px; }
         .precio-box { text-align: right; }
-        .label-precio { font-size: 0.7rem; color: #ff8c00; display: block; text-transform: uppercase; }
-        .monto { font-weight: bold; font-size: 1.1rem; }
+        .label-precio { font-size: 0.75rem; color: #ff8c00; display: block; text-transform: uppercase; letter-spacing: 1px;}
+        .monto { font-weight: bold; font-size: 1.3rem; color: #fff; }
 
         .descripcion {
-            font-size: 0.9rem;
-            color: #999;
-            margin-top: 5px;
+            font-size: 1rem;
+            color: #dddddd;
+            margin-top: 10px;
+            line-height: 1.5;
             font-style: italic;
         }
 
@@ -89,16 +117,31 @@
             background-color: #25d366;
             color: white;
             text-align: center;
-            padding: 18px;
-            margin: 40px auto;
+            padding: 20px;
+            margin: 50px auto;
             text-decoration: none;
             border-radius: 50px;
             font-weight: bold;
-            max-width: 300px;
-            box-shadow: 0 4px 15px rgba(37, 211, 102, 0.3);
+            font-size: 1.2rem;
+            max-width: 320px;
+            box-shadow: 0 5px 20px rgba(37, 211, 102, 0.4);
+            transition: all 0.3s ease;
         }
 
-        footer { text-align: center; padding: 40px; color: #555; font-size: 0.8rem; }
+        .btn-whatsapp:hover { 
+            transform: scale(1.08); 
+            box-shadow: 0 8px 25px rgba(37, 211, 102, 0.5);
+        }
+
+        footer { 
+            text-align: center; 
+            padding: 50px 20px; 
+            background: rgba(0,0,0,0.9); 
+            color: #aaa; 
+            font-size: 0.9rem;
+            border-top: 1px solid rgba(255,140,0,0.3);
+        }
+        footer p { margin: 10px 0; }
     </style>
 </head>
 <body>
@@ -197,12 +240,12 @@
             <p class="descripcion">Pechuga 350g, Papa a la Francesa y Queso Mozzarella.</p>
         </div>
 
-        <a href="https://wa.me/573161491964" class="btn-whatsapp">PEDIR AHORA POR WHATSAPP</a>
+        <a href="https://wa.me/573161491964" class="btn-whatsapp">📲 PEDIR AHORA POR WHATSAPP</a>
     </div>
 
     <footer>
         <p>PEDIDOS: 316 149 1964 - 313 392 2664</p>
-        <p>&copy; 2026 Dami Fast Food | El mejor sabor al instante</p>
+        <p>&copy; 2026 Dami Fast Food | Sabor real al instante</p>
     </footer>
 
 </body>
