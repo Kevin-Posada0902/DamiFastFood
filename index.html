@@ -6,91 +6,172 @@
     <title>Dami Fast Food | Menú Oficial</title>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
     <style>
-        :root { --naranja: #ff8c00; --oscuro: rgba(15, 15, 15, 0.9); }
+        :root {
+            --naranja: #ff8c00;
+            --oscuro: rgba(15, 15, 15, 0.9);
+        }
+
         body {
             font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-            margin: 0; padding: 0;
+            margin: 0;
+            padding: 0;
             background: linear-gradient(rgba(0,0,0,0.85), rgba(0,0,0,0.85)), 
                         url('https://images.unsplash.com/photo-1596662951482-0c4ba74a6df6?ixlib=rb-1.2.1&auto=format&fit=crop&w=1950&q=80');
-            background-size: cover; background-position: center; background-attachment: fixed;
+            background-size: cover;
+            background-position: center;
+            background-attachment: fixed;
             color: #eeeeee;
         }
+
         header {
             background-color: var(--naranja);
             padding: 10px 20px;
             text-align: center;
-            position: sticky; top: 0; z-index: 1000;
+            position: sticky;
+            top: 0;
+            z-index: 1000;
             box-shadow: 0 4px 15px rgba(0,0,0,0.6);
-            display: flex; justify-content: center; align-items: center; gap: 15px;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            gap: 15px;
         }
+
         .header-logo {
-            max-height: 55px; width: auto;
-            border-radius: 50%; border: 2px solid white;
-            background-color: white; /* Esto ayuda si el logo tiene fondo transparente */
+            max-height: 55px;
+            width: auto;
+            border-radius: 50%;
+            border: 2px solid white;
         }
-        header h1 { margin: 0; color: #fff; text-transform: uppercase; letter-spacing: 2px; font-size: 1.5rem; }
+
+        header h1 { 
+            margin: 0; 
+            color: #fff; 
+            text-transform: uppercase; 
+            letter-spacing: 2px;
+            font-size: 1.5rem;
+        }
+
         .banner { padding: 25px 20px; text-align: center; }
         .no-esperes {
-            background-color: var(--naranja); color: #fff;
-            padding: 8px 25px; border-radius: 20px;
-            font-weight: bold; display: inline-block; text-transform: uppercase;
+            background-color: var(--naranja);
+            color: #fff;
+            padding: 8px 25px;
+            border-radius: 20px;
+            font-weight: bold;
+            display: inline-block;
+            text-transform: uppercase;
         }
+
         .contenedor-menu {
-            max-width: 850px; margin: 0 auto; padding: 20px;
-            background: var(--oscuro); border-radius: 20px;
-            backdrop-filter: blur(10px); margin-bottom: 40px;
+            max-width: 850px;
+            margin: 0 auto;
+            padding: 20px;
+            background: var(--oscuro);
+            border-radius: 20px;
+            backdrop-filter: blur(10px);
+            margin-bottom: 40px;
             border: 1px solid rgba(255,140,0,0.3);
         }
+
         .categoria-titulo {
-            color: var(--naranja); border-bottom: 2px solid var(--naranja);
-            padding-bottom: 10px; margin-top: 40px; text-transform: uppercase; font-size: 1.8rem;
+            color: var(--naranja);
+            border-bottom: 2px solid var(--naranja);
+            padding-bottom: 10px;
+            margin-top: 40px;
+            text-transform: uppercase;
+            font-size: 1.8rem;
         }
+
         .item {
-            padding: 20px 15px; border-bottom: 1px solid rgba(255,255,255,0.08);
-            transition: all 0.3s ease; border-radius: 12px; cursor: pointer;
+            padding: 20px 15px;
+            border-bottom: 1px solid rgba(255,255,255,0.08);
+            transition: all 0.3s ease;
+            border-radius: 12px;
+            cursor: pointer;
         }
+        
         .item:hover {
             background: rgba(255, 140, 0, 0.15);
             transform: translateY(-3px);
             box-shadow: 0 4px 15px rgba(0,0,0,0.3);
         }
-        .item-header { display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; gap: 10px; }
+
+        .item-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            flex-wrap: wrap;
+            gap: 10px;
+        }
+
         .item-nombre { font-weight: bold; font-size: 1.3rem; color: #fff; }
         .precios-flex { display: flex; gap: 20px; }
         .precio-box { text-align: right; }
         .label-precio { font-size: 0.75rem; color: var(--naranja); display: block; text-transform: uppercase; }
         .monto { font-weight: bold; font-size: 1.2rem; color: #fff; }
         .monto-naranja { font-weight: bold; font-size: 1.2rem; color: var(--naranja); }
-        .descripcion { font-size: 0.95rem; color: #ccc; margin-top: 8px; font-style: italic; }
+
+        .descripcion {
+            font-size: 0.95rem;
+            color: #ccc;
+            margin-top: 8px;
+            font-style: italic;
+        }
+
         .badge-recomendado {
-            background: #e74c3c; color: white; font-size: 0.7rem;
-            padding: 3px 8px; border-radius: 5px; margin-left: 10px;
-            vertical-align: middle; text-transform: uppercase;
+            background: #e74c3c;
+            color: white;
+            font-size: 0.7rem;
+            padding: 3px 8px;
+            border-radius: 5px;
+            margin-left: 10px;
+            vertical-align: middle;
+            text-transform: uppercase;
         }
+
         .info-local {
-            background: rgba(0,0,0,0.9); padding: 40px 20px;
-            text-align: center; border-top: 3px solid var(--naranja);
+            background: rgba(0,0,0,0.9);
+            padding: 40px 20px;
+            text-align: center;
+            border-top: 3px solid var(--naranja);
         }
+
         .social-links a {
-            color: white; font-size: 2.2rem; margin: 0 20px;
-            transition: transform 0.3s, color 0.3s; display: inline-block;
+            color: white;
+            font-size: 2.2rem;
+            margin: 0 20px;
+            transition: transform 0.3s, color 0.3s;
+            display: inline-block;
         }
-        .social-links a:hover { color: var(--naranja); transform: scale(1.2); }
+        .social-links a:hover { 
+            color: var(--naranja); 
+            transform: scale(1.2);
+        }
+
         .btn-whatsapp {
-            display: block; background-color: #25d366; color: white;
-            text-align: center; padding: 18px; margin: 30px auto;
-            text-decoration: none; border-radius: 50px; font-weight: bold;
-            max-width: 280px; transition: transform 0.3s;
+            display: block;
+            background-color: #25d366;
+            color: white;
+            text-align: center;
+            padding: 18px;
+            margin: 30px auto;
+            text-decoration: none;
+            border-radius: 50px;
+            font-weight: bold;
+            max-width: 280px;
+            transition: transform 0.3s;
             box-shadow: 0 4px 10px rgba(37, 211, 102, 0.3);
         }
         .btn-whatsapp:hover { transform: scale(1.05); }
+
         footer { text-align: center; padding: 20px; color: #777; font-size: 0.8rem; }
     </style>
 </head>
 <body>
 
     <header>
-        <img src="logo.jpg" alt="Logo Dami Fast Food" class="header-logo">
+        <img src="WhatsApp Image 2026-04-16 at 12.41.48 AM.jpeg" alt="Logo Dami Fast Food" class="header-logo">
         <h1>DAMI FAST FOOD</h1>
     </header>
 
@@ -99,7 +180,9 @@
     </div>
 
     <div class="contenedor-menu">
+        
         <h2 class="categoria-titulo">⭐ Recomendados (Hamburguesas)</h2>
+        
         <div class="item">
             <div class="item-header">
                 <span class="item-nombre">MONSTER BURGUER <span class="badge-recomendado">LA MEJOR</span></span>
@@ -123,6 +206,7 @@
         </div>
 
         <h2 class="categoria-titulo">Hot Dogs</h2>
+        
         <div class="item">
             <div class="item-header">
                 <span class="item-nombre">HOT DOG PREMIUM</span>
@@ -134,22 +218,51 @@
             <p class="descripcion">Salchicha Americana, Cebolla Grille, Queso Mozzarella, Tocineta, Jamón Ahumado.</p>
         </div>
 
+        <div class="item">
+            <div class="item-header">
+                <span class="item-nombre">HOT DOG CLÁSIC</span>
+                <div class="precios-flex">
+                    <div class="precio-box"><span class="label-precio">Sin Papas</span><span class="monto">$12.000</span></div>
+                    <div class="precio-box"><span class="label-precio">Con Papas</span><span class="monto">$16.000</span></div>
+                </div>
+            </div>
+            <p class="descripcion">Salchicha Americana, cebolla grille, queso mozzarella.</p>
+        </div>
+
         <h2 class="categoria-titulo">Salchipapas</h2>
+        
         <div class="item">
             <div class="item-header">
                 <span class="item-nombre">SALCHIPAPA MEGA</span>
                 <span class="monto-naranja">$24.000</span>
             </div>
-            <p class="descripcion">Papa a la Francesa 400g, Salchicha Americana, Carne desmechada, Pollo desmechado, Queso Mozzarella y Tocineta.</p>
+            <p class="descripcion">Papa a la Francesa 400g, Salchicha Americana, Carne desmechada 110g, Pollo desmechado 110g, Queso Mozzarella y Tocineta.</p>
+        </div>
+
+        <div class="item">
+            <div class="item-header">
+                <span class="item-nombre">SALCHIPAPA CLÁSIC</span>
+                <span class="monto-naranja">$12.000</span>
+            </div>
+            <p class="descripcion">Papa a la Francesa 200g, Salchicha Americana y Queso Mozzarella.</p>
         </div>
 
         <h2 class="categoria-titulo">Parrilla</h2>
+        
         <div class="item">
             <div class="item-header">
                 <span class="item-nombre">CHURRASCO A LA PLANCHA</span>
                 <span class="monto-naranja">$30.000</span>
             </div>
             <p class="descripcion">Churrasco 300g, Papa a la Francesa 200g y Chimichurri.</p>
+        </div>
+
+        <div class="item">
+            <div class="item-header">
+                <span class="item-nombre">PECHUGA A LA PLANCHA</span>
+                <span class="monto-naranja">$26.000</span>
+            </div>
+            <p class="descripcion">Pechuga 350g, Papa a la Francesa y Queso Mozzarella.</p>
         </div>
 
         <a href="https://wa.me/573161491964" class="btn-whatsapp">
@@ -175,5 +288,6 @@
     <footer>
         <p>&copy; 2026 Dami Fast Food | Sabor Real a Domicilio</p>
     </footer>
+
 </body>
 </html>
