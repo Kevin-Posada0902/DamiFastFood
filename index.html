@@ -206,7 +206,23 @@
         .info-chip { padding:14px; background:rgba(255,255,255,.045); border-radius:12px; border:1px solid rgba(255,255,255,.07); }
         .info-chip strong { display:block; color:var(--naranja); margin-bottom:4px; }
         .nota-disponibilidad { font-size:.83rem; color:#bbb; margin-top:12px; }
-        .flotante-carrito { position:fixed; left:18px; bottom:18px; z-index:1001; background:#ff8c00; color:#111; border:0; border-radius:999px; padding:13px 17px; box-shadow:0 5px 22px #0009; font-weight:900; cursor:pointer; }
+
+        /* Botón independiente para consultas que no son pedidos */
+        /* Botón de consultas dentro de la sección del pedido, debajo de enviar pedido */
+        .boton-consultas {
+            display: flex; width: fit-content; max-width: 100%; box-sizing: border-box;
+            align-items: center; justify-content: center; gap: 9px;
+            margin: 12px 0 0; padding: 12px 17px; border-radius: 999px;
+            background: #fff; color: #168544; border: 2px solid #25d366;
+            box-shadow: 0 4px 12px #0005; text-decoration: none; font-weight: 800; font-size: 14px;
+        }
+        .boton-consultas:hover { transform: translateY(-2px); }
+        .boton-consultas i { font-size: 20px; }
+        @media(max-width:600px) {
+            .boton-consultas { padding: 10px 12px; font-size: 12px; gap: 6px; }
+            .boton-consultas i { font-size: 18px; }
+        }
+        .flotante-carrito { display:block !important; visibility:visible !important; opacity:1 !important; position:fixed !important; left:12px !important; right:auto !important; bottom:14px !important; top:auto !important; transform:none !important; z-index:2147483647 !important; background:#ff8c00 !important; color:#111 !important; border:2px solid #fff !important; border-radius:999px !important; padding:14px 18px !important; box-shadow:0 5px 22px #0009 !important; font-weight:900 !important; cursor:pointer !important; font-size:16px !important; }
         .flotante-carrito span { display:inline-flex; align-items:center; justify-content:center; background:#111; color:#fff; min-width:23px; height:23px; border-radius:99px; margin-left:5px; }
         .producto-seleccionado { border-color:rgba(255,140,0,.7)!important; }
         @media(max-width:600px) {
@@ -215,7 +231,7 @@
             .carrito-fila .linea-subtotal { grid-column:1/-1; text-align:right; }
             .form-pedido { grid-template-columns:1fr; }
             .form-pedido .ancho-completo { grid-column:auto; }
-            .flotante-carrito { left:10px; bottom:10px; padding:11px 13px; }
+            .flotante-carrito { left:8px !important; right:auto !important; bottom:12px !important; top:auto !important; transform:none !important; padding:11px 13px; max-width:145px; white-space:normal; }
         }
 
     
@@ -377,20 +393,23 @@
                 <article class="promo-card">
                     <span class="promo-tag">ARMA TU COMBO</span>
                     <h3>Hamburguesa + papas</h3>
-                    <p>Elige tu Monster Burguer o Burguer Clásic y agrégale papas desde las opciones del menú.</p>
+                    <p>Monster Burguer con papas al precio publicado en el menú.</p>
+                    <button type="button" class="boton-extra boton-combo" onclick="agregarCombo('monster')">Agregar combo al carrito</button>
                 </article>
                 <article class="promo-card">
                     <span class="promo-tag">PARA COMPARTIR</span>
                     <h3>Combo para dos</h3>
-                    <p>Combina dos productos favoritos y consulta por WhatsApp las opciones disponibles.</p>
+                    <p>Dos Burguer Clásic con papas, usando los precios actuales del menú (sin descuento adicional).</p>
+                    <button type="button" class="boton-extra boton-combo" onclick="agregarCombo('dos')">Agregar combo al carrito</button>
                 </article>
                 <article class="promo-card">
                     <span class="promo-tag">ANTOJO COMPLETO</span>
                     <h3>Salchipapa + acompañamiento</h3>
-                    <p>Escoge tu Salchipapa Mega o Clásic y pregunta por los acompañamientos disponibles.</p>
+                    <p>Salchipapa Mega al precio publicado en el menú. Los acompañamientos adicionales se consultan por WhatsApp.</p>
+                    <button type="button" class="boton-extra boton-combo" onclick="agregarCombo('salchi')">Agregar combo al carrito</button>
                 </article>
             </div>
-            <p class="nota-disponibilidad">Estas tarjetas son sugerencias de combinación, no descuentos activos ni precios nuevos.</p>
+            <p class="nota-disponibilidad" id="comboAviso">Los combos usan precios publicados en el menú; no aplican descuentos adicionales.</p>
         </section>
 
         <section class="panel-extra" id="carrito" aria-labelledby="carritoTitulo">
@@ -404,13 +423,13 @@
                 <div><label for="tipoProducto">Preferencia de entrega</label><select id="tipoProducto" name="entrega"><option value="Domicilio">Domicilio</option><option value="Consultar cobertura">Consultar cobertura</option></select></div>
                 <div class="ancho-completo"><label for="direccionCliente">Dirección del domicilio</label><input id="direccionCliente" name="direccion" autocomplete="street-address" placeholder="Escribe tu dirección (si aplica)"></div>
                 <div class="ancho-completo"><label for="notaCliente">Notas del pedido (opcional)</label><textarea id="notaCliente" name="notas" rows="2" placeholder="Indicaciones, cambios o referencias"></textarea></div>
-                <div class="ancho-completo"><button class="boton-extra boton-verde" type="submit"><i class="fab fa-whatsapp"></i> Enviar pedido por WhatsApp</button></div>
+                <div class="ancho-completo">
+                    <button class="boton-extra boton-verde" id="enviarPedidoBtn" type="button" onclick="return enviarPedidoWhatsApp(event)"><i class="fab fa-whatsapp"></i> Enviar pedido por WhatsApp</button>
+                    <a class="boton-consultas" href="https://wa.me/573181249259?text=Hola%20Dami%20Fast%20Food%2C%20tengo%20una%20consulta%20y%20quisiera%20hacer%20una%20pregunta%2C%20no%20realizar%20un%20pedido." target="_blank" rel="noopener noreferrer" aria-label="Hacer una consulta por WhatsApp"><i class="fab fa-whatsapp" aria-hidden="true"></i> ¿Tienes una pregunta?</a>
+                </div>
             </form>
         </section>
 
-        <a href="https://wa.me/573161491964" class="btn-whatsapp">
-            <i class="fab fa-whatsapp"></i> PEDIR POR WHATSAPP
-        </a>
     </div>
 
 
@@ -427,7 +446,7 @@
         <div class="panel-extra" aria-labelledby="horariosTitulo">
             <h2 class="titulo-extra" id="horariosTitulo"><i class="far fa-clock"></i> Horarios de atención</h2>
             <p class="texto-suave">Recibimos pedidos bajo encargo. Consulta por WhatsApp la disponibilidad y el horario para la fecha que necesitas.</p>
-            <a class="boton-extra boton-naranja" href="https://wa.me/573161491964?text=Hola%20Dami%20Fast%20Food%2C%20%C2%BFqu%C3%A9%20horarios%20de%20atenci%C3%B3n%20tienen%20disponibles%3F" target="_blank" rel="noopener"><i class="fab fa-whatsapp"></i> Consultar horario</a>
+            <a class="boton-extra boton-naranja" href="https://wa.me/573181249259?text=Hola%20Dami%20Fast%20Food%2C%20%C2%BFqu%C3%A9%20horarios%20de%20atenci%C3%B3n%20tienen%20disponibles%3F" target="_blank" rel="noopener"><i class="fab fa-whatsapp"></i> Consultar horario</a>
             <p class="nota-disponibilidad">No se muestran horas específicas porque no aparecen en la información original.</p>
         </div>
     </section>
@@ -446,12 +465,12 @@
             <a href="https://web.facebook.com/profile.php?id=61570821602781" target="_blank"><i class="fab fa-facebook"></i></a>
         </div>
     </div>
-<a href="https://wa.me/573161491964?text=Hola%20Dami%20Fast%20Food!%20Me%20gustaría%20hacer%20un%20pedido." 
+<a href="https://wa.me/573181249259?text=Hola%20Dami%20Fast%20Food!%20Me%20gustaría%20hacer%20un%20pedido." 
    style="position:fixed; width:60px; height:60px; bottom:40px; right:40px; background-color:#25d366; color:#FFF; border-radius:50px; text-align:center; font-size:30px; box-shadow: 2px 2px 3px #999; z-index:100;" 
    target="_blank">
    <img src="https://upload.wikimedia.org/wikipedia/commons/6/6b/WhatsApp.svg" alt="WhatsApp" style="width:35px; margin-top:12px;">
 </a>
-<button type="button" class="flotante-carrito" id="abrirCarrito" aria-label="Ver carrito"> <i class="fas fa-shopping-cart"></i> Mi pedido <span id="contadorCarrito">0</span></button>
+<button type="button" class="flotante-carrito" id="abrirCarrito" aria-label="Ver carrito">🛒 Ver carrito <span id="contadorCarrito">0</span></button>
 
     <footer>
         <p>&copy; 2026 Dami Fast Food | Sabor Real a Domicilio</p>
@@ -460,7 +479,7 @@
 
 <script>
 (() => {
-    const whatsappNumber = '573161491964';
+    const whatsappNumber = '573181249259';
     const cart = new Map();
     const money = value => '$' + Number(value).toLocaleString('es-CO');
     const parsePrice = text => {
@@ -470,6 +489,15 @@
     const list = document.getElementById('carritoLista');
     const totalEl = document.getElementById('carritoTotal');
     const countEl = document.getElementById('contadorCarrito');
+    const openCartButton = document.getElementById('abrirCarrito');
+    if (openCartButton) {
+        document.body.appendChild(openCartButton);
+        Object.assign(openCartButton.style, { position: 'fixed', left: '10px', right: 'auto', top: 'auto', bottom: '14px', transform: 'none', zIndex: '2147483647', display: 'block', visibility: 'visible', opacity: '1' });
+    }
+    if (openCartButton) openCartButton.addEventListener('click', () => {
+        const cartSection = document.getElementById('carrito');
+        if (cartSection) cartSection.scrollIntoView({ behavior: 'smooth', block: 'start' });
+    });
 
     function getPriceOptions(card) {
         const priceBoxes = Array.from(card.querySelectorAll('.precio-box'));
@@ -558,19 +586,36 @@
         }
     };
 
-    document.querySelectorAll('[data-add-product]').forEach(button => {
-        button.addEventListener('click', function() { window.agregarProducto(this); });
-    });
+    // Los botones usan onclick directamente para evitar que se registre el evento dos veces.
 
-    document.getElementById('abrirCarrito').addEventListener('click', () => {
-        document.getElementById('carrito').scrollIntoView({ behavior: 'smooth', block: 'start' });
-    });
+    // Agrega las combinaciones promocionales al carrito usando únicamente precios ya publicados.
+    window.agregarCombo = function(tipo) {
+        const combos = {
+            monster: [{name:'MONSTER BURGUER', option:'Con Papas', price:22000}],
+            dos: [{name:'BURGUER CLÁSIC', option:'Con Papas', price:16000}, {name:'BURGUER CLÁSIC', option:'Con Papas', price:16000}],
+            salchi: [{name:'SALCHIPAPA MEGA', option:'', price:24000}]
+        };
+        const items = combos[tipo];
+        if (!items) return;
+        items.forEach(product => {
+            const key = product.name + '|' + product.option + '|' + product.price;
+            if (cart.has(key)) cart.get(key).qty++;
+            else cart.set(key, {...product, qty:1});
+        });
+        renderCart();
+        const cartSection = document.getElementById('carrito');
+        if (cartSection) {
+            const notice = document.getElementById('comboAviso');
+            if (notice) notice.textContent = 'Combo agregado al carrito. Puedes seguir mirando el menú.';
+        }
+    };
 
-    document.getElementById('formPedido').addEventListener('submit', event => {
-        event.preventDefault();
+
+    window.enviarPedidoWhatsApp = function(event) {
+        if (event) { event.preventDefault(); event.stopPropagation(); }
         if (!cart.size) {
-            window.alert('Agrega al menos un producto antes de enviar el pedido.');
-            return;
+            window.alert('Agrega al menos un producto al carrito antes de enviar el pedido.');
+            return false;
         }
         const nombre = document.getElementById('nombreCliente').value.trim();
         const entrega = document.getElementById('tipoProducto').value;
@@ -586,11 +631,32 @@
         if (direccion) message += '\nDirección: ' + direccion;
         if (notas) message += '\nNotas: ' + notas;
         message += '\n\nPor favor confirmen disponibilidad y costo del domicilio.';
-        window.open('https://wa.me/' + whatsappNumber + '?text=' + encodeURIComponent(message), '_blank', 'noopener');
+        const whatsappUrl = 'https://wa.me/' + whatsappNumber + '?text=' + encodeURIComponent(message);
+        // Abre WhatsApp directamente a partir del clic del usuario. Si el navegador bloquea
+        // la pestaña nueva, intenta navegar en la pestaña actual como alternativa.
+        const opened = window.open(whatsappUrl, '_blank');
+        if (!opened) window.location.assign(whatsappUrl);
+        return false;
+    };
+
+    const pedidoForm = document.getElementById('formPedido');
+    if (pedidoForm) pedidoForm.addEventListener('submit', function(event) {
+        event.preventDefault();
+        return window.enviarPedidoWhatsApp(event);
+    });
+
+    // El botón general de WhatsApp también abre el chat del número actualizado.
+    document.querySelectorAll('a[href*="wa.me/"]').forEach(a => {
+        const oldUrl = new URL(a.href);
+        if (oldUrl.hostname === 'wa.me') {
+            oldUrl.pathname = '/' + whatsappNumber;
+            a.href = oldUrl.toString();
+        }
     });
 
     renderCart();
 })();
+
 </script>
 
 </body>
