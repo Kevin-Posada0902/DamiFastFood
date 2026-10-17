@@ -166,6 +166,62 @@
         .btn-whatsapp:hover { transform: scale(1.05); }
 
         footer { text-align: center; padding: 20px; color: #777; font-size: 0.8rem; }
+
+        /* Funciones nuevas añadidas sin alterar productos, precios ni datos existentes */
+        .bloque-extra { max-width: 890px; margin: 24px auto; padding: 22px; box-sizing: border-box; }
+        .panel-extra {
+            background: rgba(12,12,12,.93); border: 1px solid rgba(255,140,0,.35);
+            border-radius: 18px; padding: clamp(16px, 3vw, 26px); margin: 18px 0;
+            box-shadow: 0 12px 34px rgba(0,0,0,.28);
+        }
+        .titulo-extra { color: var(--naranja); text-transform: uppercase; margin: 0 0 14px; font-size: clamp(1.25rem,3vw,1.7rem); }
+        .texto-suave { color: #d4d4d4; }
+        .promo-grid { display:grid; grid-template-columns: repeat(auto-fit,minmax(210px,1fr)); gap:14px; }
+        .promo-card { background:linear-gradient(145deg,rgba(255,140,0,.17),rgba(255,255,255,.035)); border:1px solid rgba(255,140,0,.28); border-radius:14px; padding:16px; }
+        .promo-card h3 { margin:0 0 8px; color:#fff; }
+        .promo-card p { color:#ccc; margin:0; font-size:.94rem; }
+        .promo-tag { display:inline-block; color:#111; background:#ffad33; font-weight:800; font-size:.72rem; padding:4px 8px; border-radius:6px; margin-bottom:9px; }
+        .boton-extra { border:0; cursor:pointer; border-radius:10px; padding:11px 14px; font-weight:800; font:inherit; transition:transform .2s,filter .2s; }
+        .boton-extra:hover { transform:translateY(-1px); filter:brightness(1.08); }
+        .boton-naranja { background:var(--naranja); color:#111; }
+        .boton-verde { background:#25d366; color:#fff; }
+        .boton-oscuro { background:#292929; color:#fff; border:1px solid #555; }
+        .opcion-carrito-label { display:block; width:100%; color:#fff; font-weight:700; margin-bottom:8px; }
+        .opcion-carrito { display:block; width:100%; margin-top:6px; padding:10px; border-radius:8px; background:#222; color:#fff; border:1px solid #ff8c00; font-size:1rem; }
+        .item-acciones { display:flex; gap:9px; flex-wrap:wrap; margin-top:14px; }
+        .btn-agregar { background:#ff8c00; color:#151515; border:0; border-radius:9px; padding:9px 12px; font-weight:800; cursor:pointer; }
+        .btn-agregar:focus-visible,.boton-extra:focus-visible,.btn-whatsapp:focus-visible { outline:3px solid #fff; outline-offset:3px; }
+        .carrito-lista { list-style:none; padding:0; margin:12px 0; }
+        .carrito-fila { display:grid; grid-template-columns:minmax(0,1fr) auto auto; gap:10px; align-items:center; padding:12px 0; border-bottom:1px solid #333; }
+        .carrito-fila small { display:block; color:#bbb; }
+        .cantidad-control { display:flex; align-items:center; gap:7px; }
+        .cantidad-control button { background:#333; color:#fff; border:1px solid #555; border-radius:7px; width:29px; height:29px; cursor:pointer; }
+        .carrito-total { display:flex; justify-content:space-between; gap:10px; align-items:center; border-top:2px solid var(--naranja); padding-top:14px; font-size:1.15rem; font-weight:800; }
+        .carrito-vacio { color:#bbb; text-align:center; padding:16px 0; }
+        .form-pedido { display:grid; grid-template-columns:repeat(2,minmax(0,1fr)); gap:12px; margin-top:15px; }
+        .form-pedido label { display:block; font-size:.88rem; color:#ddd; }
+        .form-pedido input,.form-pedido select,.form-pedido textarea { box-sizing:border-box; width:100%; margin-top:5px; padding:11px; border:1px solid #555; border-radius:9px; background:#171717; color:#fff; font:inherit; }
+        .form-pedido .ancho-completo { grid-column:1/-1; }
+        .info-grid { display:grid; grid-template-columns:repeat(auto-fit,minmax(190px,1fr)); gap:12px; }
+        .info-chip { padding:14px; background:rgba(255,255,255,.045); border-radius:12px; border:1px solid rgba(255,255,255,.07); }
+        .info-chip strong { display:block; color:var(--naranja); margin-bottom:4px; }
+        .nota-disponibilidad { font-size:.83rem; color:#bbb; margin-top:12px; }
+        .flotante-carrito { position:fixed; left:18px; bottom:18px; z-index:1001; background:#ff8c00; color:#111; border:0; border-radius:999px; padding:13px 17px; box-shadow:0 5px 22px #0009; font-weight:900; cursor:pointer; }
+        .flotante-carrito span { display:inline-flex; align-items:center; justify-content:center; background:#111; color:#fff; min-width:23px; height:23px; border-radius:99px; margin-left:5px; }
+        .producto-seleccionado { border-color:rgba(255,140,0,.7)!important; }
+        @media(max-width:600px) {
+            .bloque-extra { padding:12px; }
+            .carrito-fila { grid-template-columns:minmax(0,1fr) auto; }
+            .carrito-fila .linea-subtotal { grid-column:1/-1; text-align:right; }
+            .form-pedido { grid-template-columns:1fr; }
+            .form-pedido .ancho-completo { grid-column:auto; }
+            .flotante-carrito { left:10px; bottom:10px; padding:11px 13px; }
+        }
+
+    
+        .btn-agregar.agregado { background: #238636 !important; color: #fff !important; }
+        .producto-seleccionado { outline: 1px solid rgba(255,140,0,.55); outline-offset: 2px; }
+
     </style>
 </head>
 <body>
@@ -192,6 +248,13 @@
                 </div>
             </div>
             <p class="descripcion">Carne Artesanal 300g, Cebolla grille, Queso Mozzarella, Queso Cheddar, Tocineta y Vegetales.</p>
+            <div class="item-acciones">
+                <label class="opcion-carrito-label">Elige tu opción: <select class="opcion-carrito"><option value="18000" data-option="Sin Papas">Sin Papas — $18.000</option><option value="22000" data-option="Con Papas">Con Papas — $22.000</option></select></label>
+                <div class="item-acciones">
+                <button type="button" class="btn-agregar" data-add-product onclick="agregarProducto(this)">
+                    <i class="fas fa-cart-plus"></i> Agregar al carrito
+                </button>
+            </div>
         </div>
 
         <div class="item">
@@ -203,6 +266,13 @@
                 </div>
             </div>
             <p class="descripcion">Carne Artesanal 150g, Cebolla grille, Queso Mozzarella, Queso Cheddar y Vegetales.</p>
+            <div class="item-acciones">
+                <label class="opcion-carrito-label">Elige tu opción: <select class="opcion-carrito"><option value="12000" data-option="Sin Papas">Sin Papas — $12.000</option><option value="16000" data-option="Con Papas">Con Papas — $16.000</option></select></label>
+                <div class="item-acciones">
+                <button type="button" class="btn-agregar" data-add-product onclick="agregarProducto(this)">
+                    <i class="fas fa-cart-plus"></i> Agregar al carrito
+                </button>
+            </div>
         </div>
 
         <h2 class="categoria-titulo">Hot Dogs</h2>
@@ -216,6 +286,13 @@
                 </div>
             </div>
             <p class="descripcion">Salchicha Americana, Cebolla Grille, Queso Mozzarella, Tocineta, Jamón Ahumado.</p>
+            <div class="item-acciones">
+                <label class="opcion-carrito-label">Elige tu opción: <select class="opcion-carrito"><option value="18000" data-option="Sin Papas">Sin Papas — $18.000</option><option value="22000" data-option="Con Papas">Con Papas — $22.000</option></select></label>
+                <div class="item-acciones">
+                <button type="button" class="btn-agregar" data-add-product onclick="agregarProducto(this)">
+                    <i class="fas fa-cart-plus"></i> Agregar al carrito
+                </button>
+            </div>
         </div>
 
         <div class="item">
@@ -227,6 +304,13 @@
                 </div>
             </div>
             <p class="descripcion">Salchicha Americana, cebolla grille, queso mozzarella.</p>
+            <div class="item-acciones">
+                <label class="opcion-carrito-label">Elige tu opción: <select class="opcion-carrito"><option value="12000" data-option="Sin Papas">Sin Papas — $12.000</option><option value="16000" data-option="Con Papas">Con Papas — $16.000</option></select></label>
+                <div class="item-acciones">
+                <button type="button" class="btn-agregar" data-add-product onclick="agregarProducto(this)">
+                    <i class="fas fa-cart-plus"></i> Agregar al carrito
+                </button>
+            </div>
         </div>
 
         <h2 class="categoria-titulo">Salchipapas</h2>
@@ -237,6 +321,11 @@
                 <span class="monto-naranja">$24.000</span>
             </div>
             <p class="descripcion">Papa a la Francesa 400g, Salchicha Americana, Carne desmechada 110g, Pollo desmechado 110g, Queso Mozzarella y Tocineta.</p>
+            <div class="item-acciones">
+                <button type="button" class="btn-agregar" data-add-product onclick="agregarProducto(this)">
+                    <i class="fas fa-cart-plus"></i> Agregar al carrito
+                </button>
+            </div>
         </div>
 
         <div class="item">
@@ -245,6 +334,11 @@
                 <span class="monto-naranja">$12.000</span>
             </div>
             <p class="descripcion">Papa a la Francesa 200g, Salchicha Americana y Queso Mozzarella.</p>
+            <div class="item-acciones">
+                <button type="button" class="btn-agregar" data-add-product onclick="agregarProducto(this)">
+                    <i class="fas fa-cart-plus"></i> Agregar al carrito
+                </button>
+            </div>
         </div>
 
         <h2 class="categoria-titulo">Parrilla</h2>
@@ -255,6 +349,11 @@
                 <span class="monto-naranja">$30.000</span>
             </div>
             <p class="descripcion">Churrasco 300g, Papa a la Francesa 200g y Chimichurri.</p>
+            <div class="item-acciones">
+                <button type="button" class="btn-agregar" data-add-product onclick="agregarProducto(this)">
+                    <i class="fas fa-cart-plus"></i> Agregar al carrito
+                </button>
+            </div>
         </div>
 
         <div class="item">
@@ -263,12 +362,75 @@
                 <span class="monto-naranja">$26.000</span>
             </div>
             <p class="descripcion">Pechuga 350g, Papa a la Francesa y Queso Mozzarella.</p>
+            <div class="item-acciones">
+                <button type="button" class="btn-agregar" data-add-product onclick="agregarProducto(this)">
+                    <i class="fas fa-cart-plus"></i> Agregar al carrito
+                </button>
+            </div>
         </div>
+
+
+        <section class="panel-extra" aria-labelledby="promosTitulo">
+            <h2 class="titulo-extra" id="promosTitulo"><i class="fas fa-fire"></i> Combos y promociones</h2>
+            <p class="texto-suave">Ideas para armar tu combo. Los precios promocionales no se publican hasta que los definas.</p>
+            <div class="promo-grid">
+                <article class="promo-card">
+                    <span class="promo-tag">ARMA TU COMBO</span>
+                    <h3>Hamburguesa + papas</h3>
+                    <p>Elige tu Monster Burguer o Burguer Clásic y agrégale papas desde las opciones del menú.</p>
+                </article>
+                <article class="promo-card">
+                    <span class="promo-tag">PARA COMPARTIR</span>
+                    <h3>Combo para dos</h3>
+                    <p>Combina dos productos favoritos y consulta por WhatsApp las opciones disponibles.</p>
+                </article>
+                <article class="promo-card">
+                    <span class="promo-tag">ANTOJO COMPLETO</span>
+                    <h3>Salchipapa + acompañamiento</h3>
+                    <p>Escoge tu Salchipapa Mega o Clásic y pregunta por los acompañamientos disponibles.</p>
+                </article>
+            </div>
+            <p class="nota-disponibilidad">Estas tarjetas son sugerencias de combinación, no descuentos activos ni precios nuevos.</p>
+        </section>
+
+        <section class="panel-extra" id="carrito" aria-labelledby="carritoTitulo">
+            <h2 class="titulo-extra" id="carritoTitulo"><i class="fas fa-shopping-basket"></i> Tu pedido</h2>
+            <p class="texto-suave">Agrega productos desde el menú. Puedes ajustar las cantidades antes de enviar el pedido por WhatsApp.</p>
+            <ul class="carrito-lista" id="carritoLista"><li class="carrito-vacio">Todavía no has agregado productos.</li></ul>
+            <div class="carrito-total"><span>Total de productos</span><span id="carritoTotal">$0</span></div>
+            <p class="nota-disponibilidad">El total incluye solo los productos seleccionados; el costo del domicilio no está incluido.</p>
+            <form class="form-pedido" id="formPedido">
+                <div><label for="nombreCliente">Nombre (opcional)</label><input id="nombreCliente" name="nombre" autocomplete="name" placeholder="¿Cómo te llamas?"></div>
+                <div><label for="tipoProducto">Preferencia de entrega</label><select id="tipoProducto" name="entrega"><option value="Domicilio">Domicilio</option><option value="Consultar cobertura">Consultar cobertura</option></select></div>
+                <div class="ancho-completo"><label for="direccionCliente">Dirección del domicilio</label><input id="direccionCliente" name="direccion" autocomplete="street-address" placeholder="Escribe tu dirección (si aplica)"></div>
+                <div class="ancho-completo"><label for="notaCliente">Notas del pedido (opcional)</label><textarea id="notaCliente" name="notas" rows="2" placeholder="Indicaciones, cambios o referencias"></textarea></div>
+                <div class="ancho-completo"><button class="boton-extra boton-verde" type="submit"><i class="fab fa-whatsapp"></i> Enviar pedido por WhatsApp</button></div>
+            </form>
+        </section>
 
         <a href="https://wa.me/573161491964" class="btn-whatsapp">
             <i class="fab fa-whatsapp"></i> PEDIR POR WHATSAPP
         </a>
     </div>
+
+
+    <section class="bloque-extra">
+        <div class="panel-extra" aria-labelledby="domiciliosTitulo">
+            <h2 class="titulo-extra" id="domiciliosTitulo"><i class="fas fa-motorcycle"></i> Información de domicilios</h2>
+            <div class="info-grid">
+                <div class="info-chip"><strong><i class="fas fa-map-marker-alt"></i> Zona de servicio</strong><span>Ibagué, según cobertura disponible.</span></div>
+                <div class="info-chip"><strong><i class="fas fa-house"></i> Modalidad</strong><span>Solo domicilios y pedidos bajo encargo.</span></div>
+                <div class="info-chip"><strong><i class="fas fa-receipt"></i> Valor del domicilio</strong><span>Confírmalo por WhatsApp antes de finalizar el pedido.</span></div>
+            </div>
+            <p class="nota-disponibilidad">La cobertura y el valor del domicilio se confirman directamente; no se han añadido tarifas ni zonas nuevas.</p>
+        </div>
+        <div class="panel-extra" aria-labelledby="horariosTitulo">
+            <h2 class="titulo-extra" id="horariosTitulo"><i class="far fa-clock"></i> Horarios de atención</h2>
+            <p class="texto-suave">Recibimos pedidos bajo encargo. Consulta por WhatsApp la disponibilidad y el horario para la fecha que necesitas.</p>
+            <a class="boton-extra boton-naranja" href="https://wa.me/573161491964?text=Hola%20Dami%20Fast%20Food%2C%20%C2%BFqu%C3%A9%20horarios%20de%20atenci%C3%B3n%20tienen%20disponibles%3F" target="_blank" rel="noopener"><i class="fab fa-whatsapp"></i> Consultar horario</a>
+            <p class="nota-disponibilidad">No se muestran horas específicas porque no aparecen en la información original.</p>
+        </div>
+    </section>
 
     <div class="info-local">
         <h3>📍 INFORMACIÓN DE PEDIDOS</h3>
@@ -289,9 +451,147 @@
    target="_blank">
    <img src="https://upload.wikimedia.org/wikipedia/commons/6/6b/WhatsApp.svg" alt="WhatsApp" style="width:35px; margin-top:12px;">
 </a>
+<button type="button" class="flotante-carrito" id="abrirCarrito" aria-label="Ver carrito"> <i class="fas fa-shopping-cart"></i> Mi pedido <span id="contadorCarrito">0</span></button>
+
     <footer>
         <p>&copy; 2026 Dami Fast Food | Sabor Real a Domicilio</p>
     </footer>
+
+
+<script>
+(() => {
+    const whatsappNumber = '573161491964';
+    const cart = new Map();
+    const money = value => '$' + Number(value).toLocaleString('es-CO');
+    const parsePrice = text => {
+        const digits = (text || '').replace(/[^\d]/g, '');
+        return digits ? Number(digits) : 0;
+    };
+    const list = document.getElementById('carritoLista');
+    const totalEl = document.getElementById('carritoTotal');
+    const countEl = document.getElementById('contadorCarrito');
+
+    function getPriceOptions(card) {
+        const priceBoxes = Array.from(card.querySelectorAll('.precio-box'));
+        if (priceBoxes.length) {
+            return priceBoxes.map(box => ({
+                label: box.querySelector('.label-precio')?.textContent.trim() || 'Producto',
+                price: parsePrice(box.querySelector('.monto')?.textContent)
+            }));
+        }
+        const amount = card.querySelector('.monto-naranja, .monto');
+        return [{ label: '', price: parsePrice(amount?.textContent) }];
+    }
+
+    function renderCart() {
+        list.innerHTML = '';
+        let total = 0, count = 0;
+        if (!cart.size) {
+            list.innerHTML = '<li class="carrito-vacio">Todavía no has agregado productos.</li>';
+        }
+        cart.forEach((item, key) => {
+            const subtotal = item.price * item.qty;
+            total += subtotal; count += item.qty;
+            const li = document.createElement('li');
+            li.className = 'carrito-fila';
+            const name = document.createElement('div');
+            name.textContent = item.name;
+            if (item.option) {
+                const small = document.createElement('small');
+                small.textContent = item.option;
+                name.appendChild(small);
+            }
+            const controls = document.createElement('div');
+            controls.className = 'cantidad-control';
+            const minus = document.createElement('button');
+            minus.type = 'button'; minus.textContent = '−'; minus.setAttribute('aria-label', 'Quitar una unidad');
+            minus.addEventListener('click', () => {
+                const current = cart.get(key);
+                if (current.qty <= 1) cart.delete(key);
+                else current.qty--;
+                renderCart();
+            });
+            const qty = document.createElement('span'); qty.textContent = item.qty;
+            const plus = document.createElement('button');
+            plus.type = 'button'; plus.textContent = '+'; plus.setAttribute('aria-label', 'Agregar una unidad');
+            plus.addEventListener('click', () => { cart.get(key).qty++; renderCart(); });
+            controls.append(minus, qty, plus);
+            const subtotalEl = document.createElement('strong');
+            subtotalEl.className = 'linea-subtotal'; subtotalEl.textContent = money(subtotal);
+            li.append(name, controls, subtotalEl);
+            list.appendChild(li);
+        });
+        totalEl.textContent = money(total);
+        countEl.textContent = count;
+    }
+
+    // Función global llamada directamente por cada botón del menú.
+    window.agregarProducto = function(button) {
+        try {
+            const card = button.closest('.item');
+            if (!card) { window.alert('No se pudo identificar el producto.'); return; }
+            const nameEl = card.querySelector('.item-nombre');
+            const name = nameEl ? nameEl.childNodes[0].textContent.trim() : 'Producto';
+            const selector = card.querySelector('.opcion-carrito');
+            let option = '', price = 0;
+            if (selector) {
+                const chosen = selector.options[selector.selectedIndex];
+                price = Number(chosen.value);
+                option = chosen.dataset.option || chosen.textContent.split('—')[0].trim();
+            } else {
+                const amount = card.querySelector('.monto-naranja, .monto');
+                price = parsePrice(amount ? amount.textContent : '');
+            }
+            if (!price || !Number.isFinite(price)) { window.alert('No se pudo leer el precio de este producto.'); return; }
+            const key = name + '|' + option + '|' + price;
+            if (cart.has(key)) cart.get(key).qty++;
+            else cart.set(key, { name, option, price, qty: 1 });
+            card.classList.add('producto-seleccionado');
+            renderCart();
+            const oldText = button.innerHTML;
+            button.textContent = '¡Agregado!';
+            button.classList.add('agregado');
+            window.setTimeout(() => { button.innerHTML = oldText; button.classList.remove('agregado'); }, 1200);
+        } catch (error) {
+            console.error('Error agregando producto:', error);
+            window.alert('Ocurrió un error al agregar el producto. Recarga la página e inténtalo de nuevo.');
+        }
+    };
+
+    document.querySelectorAll('[data-add-product]').forEach(button => {
+        button.addEventListener('click', function() { window.agregarProducto(this); });
+    });
+
+    document.getElementById('abrirCarrito').addEventListener('click', () => {
+        document.getElementById('carrito').scrollIntoView({ behavior: 'smooth', block: 'start' });
+    });
+
+    document.getElementById('formPedido').addEventListener('submit', event => {
+        event.preventDefault();
+        if (!cart.size) {
+            window.alert('Agrega al menos un producto antes de enviar el pedido.');
+            return;
+        }
+        const nombre = document.getElementById('nombreCliente').value.trim();
+        const entrega = document.getElementById('tipoProducto').value;
+        const direccion = document.getElementById('direccionCliente').value.trim();
+        const notas = document.getElementById('notaCliente').value.trim();
+        const lines = Array.from(cart.values()).map(item =>
+            `• ${item.qty} x ${item.name}${item.option ? ' (' + item.option + ')' : ''} — ${money(item.price * item.qty)}`
+        );
+        const total = Array.from(cart.values()).reduce((sum, item) => sum + item.price * item.qty, 0);
+        let message = 'Hola Dami Fast Food, quiero hacer este pedido:\n\n' + lines.join('\n') + '\n\nTotal productos: ' + money(total);
+        if (nombre) message += '\nNombre: ' + nombre;
+        message += '\nEntrega: ' + entrega;
+        if (direccion) message += '\nDirección: ' + direccion;
+        if (notas) message += '\nNotas: ' + notas;
+        message += '\n\nPor favor confirmen disponibilidad y costo del domicilio.';
+        window.open('https://wa.me/' + whatsappNumber + '?text=' + encodeURIComponent(message), '_blank', 'noopener');
+    });
+
+    renderCart();
+})();
+</script>
 
 </body>
 </html>
