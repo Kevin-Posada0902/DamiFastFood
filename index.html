@@ -388,28 +388,50 @@
 
         <section class="panel-extra" aria-labelledby="promosTitulo">
             <h2 class="titulo-extra" id="promosTitulo"><i class="fas fa-fire"></i> Combos y promociones</h2>
-            <p class="texto-suave">Ideas para armar tu combo. Los precios promocionales no se publican hasta que los definas.</p>
+            <p class="texto-suave">¡Elige tu combo favorito y agrégalo al carrito!</p>
             <div class="promo-grid">
                 <article class="promo-card">
-                    <span class="promo-tag">ARMA TU COMBO</span>
-                    <h3>Hamburguesa + papas</h3>
-                    <p>Monster Burguer con papas al precio publicado en el menú.</p>
-                    <button type="button" class="boton-extra boton-combo" onclick="agregarCombo('monster')">Agregar combo al carrito</button>
-                </article>
-                <article class="promo-card">
-                    <span class="promo-tag">PARA COMPARTIR</span>
+                    <span class="promo-tag">COMBO #1</span>
                     <h3>Combo para dos</h3>
-                    <p>Dos Burguer Clásic con papas, usando los precios actuales del menú (sin descuento adicional).</p>
+                    <p>Elige 2 productos entre hamburguesa clásica, perro clásico y salchipapa clásica.</p>
+                    <label class="opcion-carrito-label" for="comboDosProducto1">Primer producto</label>
+                    <select class="opcion-carrito" id="comboDosProducto1">
+                        <option value="Hamburguesa clásica">Hamburguesa clásica</option>
+                        <option value="Perro clásico">Perro clásico</option>
+                        <option value="Salchipapa clásica">Salchipapa clásica</option>
+                    </select>
+                    <label class="opcion-carrito-label" for="comboDosProducto2" style="margin-top:10px">Segundo producto</label>
+                    <select class="opcion-carrito" id="comboDosProducto2">
+                        <option value="Hamburguesa clásica">Hamburguesa clásica</option>
+                        <option value="Perro clásico">Perro clásico</option>
+                        <option value="Salchipapa clásica">Salchipapa clásica</option>
+                    </select>
+                    <p class="monto-naranja" style="margin:12px 0">$18.000</p>
                     <button type="button" class="boton-extra boton-combo" onclick="agregarCombo('dos')">Agregar combo al carrito</button>
                 </article>
                 <article class="promo-card">
-                    <span class="promo-tag">ANTOJO COMPLETO</span>
-                    <h3>Salchipapa + acompañamiento</h3>
-                    <p>Salchipapa Mega al precio publicado en el menú. Los acompañamientos adicionales se consultan por WhatsApp.</p>
-                    <button type="button" class="boton-extra boton-combo" onclick="agregarCombo('salchi')">Agregar combo al carrito</button>
+                    <span class="promo-tag">COMBO #2</span>
+                    <h3>Combo para compartir</h3>
+                    <p>2 hamburguesas clásicas, 2 salchipapas clásicas y 1 gaseosa de 1,5 L.</p>
+                    <p class="monto-naranja" style="margin:12px 0">$60.000</p>
+                    <button type="button" class="boton-extra boton-combo" onclick="agregarCombo('compartir')">Agregar combo al carrito</button>
+                </article>
+                <article class="promo-card">
+                    <span class="promo-tag">COMBO #3</span>
+                    <h3>Combo individual</h3>
+                    <p>1 hamburguesa clásica con papas a la francesa y 1 gaseosa de 400 ml.</p>
+                    <p class="monto-naranja" style="margin:12px 0">$17.500</p>
+                    <button type="button" class="boton-extra boton-combo" onclick="agregarCombo('individual')">Agregar combo al carrito</button>
+                </article>
+                <article class="promo-card">
+                    <span class="promo-tag">COMBO #4</span>
+                    <h3>Combo familiar</h3>
+                    <p>2 hamburguesas Monster, 2 hamburguesas clásicas y 2 porciones de papa a la francesa.</p>
+                    <p class="monto-naranja" style="margin:12px 0">$55.000</p>
+                    <button type="button" class="boton-extra boton-combo" onclick="agregarCombo('familiar')">Agregar combo al carrito</button>
                 </article>
             </div>
-            <p class="nota-disponibilidad" id="comboAviso">Los combos usan precios publicados en el menú; no aplican descuentos adicionales.</p>
+            <p class="nota-disponibilidad" id="comboAviso">Los combos se agregarán al carrito con el precio publicado.</p>
         </section>
 
         <section class="panel-extra" id="carrito" aria-labelledby="carritoTitulo">
@@ -588,26 +610,29 @@
 
     // Los botones usan onclick directamente para evitar que se registre el evento dos veces.
 
-    // Agrega las combinaciones promocionales al carrito usando únicamente precios ya publicados.
+    // Agrega los combos al carrito con los precios definidos para cada promoción.
     window.agregarCombo = function(tipo) {
         const combos = {
-            monster: [{name:'MONSTER BURGUER', option:'Con Papas', price:22000}],
-            dos: [{name:'BURGUER CLÁSIC', option:'Con Papas', price:16000}, {name:'BURGUER CLÁSIC', option:'Con Papas', price:16000}],
-            salchi: [{name:'SALCHIPAPA MEGA', option:'', price:24000}]
+            compartir: {name:'COMBO PARA COMPARTIR', option:'2 hamburguesas clásicas + 2 salchipapas clásicas + gaseosa 1,5 L', price:60000},
+            individual: {name:'COMBO INDIVIDUAL', option:'Hamburguesa clásica con papas a la francesa + gaseosa 400 ml', price:17500},
+            familiar: {name:'COMBO FAMILIAR', option:'2 hamburguesas Monster + 2 hamburguesas clásicas + 2 porciones de papa a la francesa', price:55000}
         };
-        const items = combos[tipo];
-        if (!items) return;
-        items.forEach(product => {
-            const key = product.name + '|' + product.option + '|' + product.price;
-            if (cart.has(key)) cart.get(key).qty++;
-            else cart.set(key, {...product, qty:1});
-        });
-        renderCart();
-        const cartSection = document.getElementById('carrito');
-        if (cartSection) {
-            const notice = document.getElementById('comboAviso');
-            if (notice) notice.textContent = 'Combo agregado al carrito. Puedes seguir mirando el menú.';
+        let product;
+        if (tipo === 'dos') {
+            const first = document.getElementById('comboDosProducto1')?.value;
+            const second = document.getElementById('comboDosProducto2')?.value;
+            if (!first || !second) return;
+            product = {name:'COMBO PARA DOS', option:first + ' + ' + second, price:18000};
+        } else {
+            product = combos[tipo];
         }
+        if (!product) return;
+        const key = product.name + '|' + product.option + '|' + product.price;
+        if (cart.has(key)) cart.get(key).qty++;
+        else cart.set(key, {...product, qty:1});
+        renderCart();
+        const notice = document.getElementById('comboAviso');
+        if (notice) notice.textContent = product.name + ' agregado al carrito por ' + money(product.price) + '. Puedes seguir mirando el menú.';
     };
 
 
